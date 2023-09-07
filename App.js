@@ -1,12 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+import Home from './src/screens/home';
+
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <View style={styles.container}>
+        <Home />
+        <StatusBar style="auto" />
+      </View>
+    </QueryClientProvider>
   );
 }
 
